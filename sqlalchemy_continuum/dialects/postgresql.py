@@ -50,6 +50,7 @@ procedure_sql = """
 CREATE OR REPLACE FUNCTION {procedure_name}() RETURNS TRIGGER AS $$
 DECLARE transaction_id_value INT;
 BEGIN
+    {temporary_transaction_sql}
     BEGIN
         transaction_id_value = (SELECT id FROM temporary_transaction);
     EXCEPTION WHEN others THEN
